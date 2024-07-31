@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Explora el fascinante universo del cine a lo largo de los años">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enciclopedia Cinematográfica</title>
+</head>
+
+<body>
+
+    <script>
+        fetch('app/auth_check.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.authenticated) {
+                    window.location.href = 'login';
+                }
+            })
+            .catch(error => {
+                console.error('Error al verificar la autenticación:', error);
+                window.location.href = 'login';
+            });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('app/check_admin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        // Mostrar el botón de administración si el usuario es un administrador
+                        document.querySelector('.admin-button').style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error al verificar el rol del usuario:', error));
+        });
+    </script>
+
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex align-items-center">
+            <img src="imagenes/Logo.jpg" alt="Logo de Enciclopedia Cinematográfica" class="img-fluid mr-3" style="max-width: 100px;">
+            <h1 class="m-0"><a href="index" class="text-white text-decoration-none">Enciclopedia Cinematográfica</a></h1>
+            <a href="app/logout.php" class="btn btn-outline-light ml-auto">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <!-- Formulario de búsqueda -->
+            <form action="buscar" method="get" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="ubicacion ">Ubicación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personajes ">Personajes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="actividades ">Actividades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="historia ">Historia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creditos ">Créditos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comentarios">Comentarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="perfil">Perfil</a></li>
+                    <!-- Botón de administración oculto por defecto -->
+                    <li class="nav-item admin-button" style="display: none;">
+                        <a class="nav-link" href="admin_page">Administrador</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <h2>Créditos</h2>
+        <p>Agradecemos a los siguientes recursos por su valiosa contribución a nuestra investigación:</p>
+
+        <div class="mb-4">
+            <h4>Hermanos Lumière</h4>
+            <ul class="list-unstyled">
+                <li>Hermanos Lumière | Quiénes fueron, biografía, qué inventaron, películas. <a href="https://www.euston96.com/hermanos-lumiere/" target="_blank">Euston96</a>.</li>
+                <li>Los hermanos Lumière, los padres del cine - La Nación. <a href="https://lanacion.com.ec/los-hermanos-lumiere-los-padres-del-cine/" target="_blank">La Nación</a>.</li>
+                <li>Los hermanos Lumière y la invención del cine | Tierra Adentro. <a href="https://www.tierraadentro.cultura.gob.mx/los-hermanos-lumiere-y-la-invencion-del-cine/" target="_blank">Tierra Adentro</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Alice Guy</h4>
+            <ul class="list-unstyled">
+                <li>Alice Guy - Wikipedia, la enciclopedia libre. <a href="https://es.wikipedia.org/wiki/Alice_Guy" target="_blank">Wikipedia</a>.</li>
+                <li>Mujeres Bacanas | Alice Guy (1873-1968). <a href="https://mujeresbacanas.com/la-primera-cineasta-alice-guy-1873-1968-alice/" target="_blank">Mujeres Bacanas</a>.</li>
+                <li>Alice Guy: la pionera del cine en viñetas - Blog de Comics. <a href="https://blogdecomics.com/alice-guy/" target="_blank">Blog de Comics</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Georges Méliès</h4>
+            <ul class="list-unstyled">
+                <li>Georges Méliès - Wikipedia, la enciclopedia libre. <a href="https://es.wikipedia.org/wiki/Georges_M%C3%A9li%C3%A8s" target="_blank">Wikipedia</a>.</li>
+                <li>Georges Méliès, el mago que convirtió el cine en arte, fantasía y .... <a href="https://elpais.com/cultura/2018/05/03/actualidad/1525328820_070614 " target="_blank">El País</a>.</li>
+                <li>Georges Méliès: El hechicero que inventó el cine espectáculo. <a href="https://cinepremiere.com.mx/georges-melies-historia-del-cine " target="_blank">Cine Premiere</a>.</li>
+                <li>¿Cuál es la importancia de Georges Méliès en la historia del cine?. <a href="https://consejossabios.com.mx/cual-es-la-importancia-de-georges-melies-en-la-historia-del-cine/" target="_blank">Consejos Sabios</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Charles Chaplin</h4>
+            <ul class="list-unstyled">
+                <li>Charles Chaplin: el genio que revolucionó el cine - Fahrenheit Magazine. <a href="https://fahrenheitmagazine.com/arte/cine/charles-chaplin-el-genio-que-revoluciono-el-cine" target="_blank">Fahrenheit Magazine</a>.</li>
+                <li>La historia de Charles Chaplin, el padre de Charlot. <a href="https://historia.nationalgeographic.com.es/a/historia-charles-chaplin-padre-charlot_14146" target="_blank">National Geographic</a>.</li>
+                <li>La historia de Charles Chaplin: una de las mayores figuras del cine. <a href="https://laopinion.com/2022/04/17/la-historia-de-charles-chaplin-una-de-las-mayores-figuras-del-cine/" target="_blank">La Opinión</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Orson Welles</h4>
+            <ul class="list-unstyled">
+                <li>Orson Welles: Biografía y filmografía - AlohaCriticón. <a href="https://www.alohacriticon.com/cine/actores-y-directores/orson-welles/" target="_blank">AlohaCriticón</a>.</li>
+                <li>Orson Welles - Wikipedia, la enciclopedia libre. <a href="https://es.wikipedia.org/wiki/Orson_Welles" target="_blank">Wikipedia</a>.</li>
+                <li>"Ciudadano Kane": 4 razones por las que es considerada por muchos como .... <a href="https://www.bbc.com/mundo/noticias-56144392" target="_blank">BBC</a>.</li>
+                <li>El ciudadano Kane y su importancia en el cine – AGEA. <a href="https://agea.org.es/el-ciudadano-kane-y-su-importancia-en-el-cine/" target="_blank">AGEA</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Western</h4>
+            <ul class="list-unstyled">
+                <li>Western - Wikipedia, la enciclopedia libre. <a href="https://es.wikipedia.org/wiki/W%C3%A9stern" target="_blank">Wikipedia</a>.</li>
+                <li>El western, su devenir histórico, estético y subversivo. <a href="https://www.timeoutmexico.mx/ciudad-de-mexico/cine/el-western-su-devenir-historico-estetico-y-subversivo" target="_blank">Time Out Mexico</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Cine de los Años 70</h4>
+            <ul class="list-unstyled">
+                <li>Cine mexicano de los 70: La década crucial - Crónica. <a href="https://www.cronica.com.mx/notas-cine_mexicano_de_los_70_la_decada_crucial-1004847-2017 " target="_blank">Crónica</a>.</li>
+                <li>1960-70: la cumbre del cine - Espinof. <a href="https://www.espinof.com/proyectos/1960-70-la-cumbre-del-cine" target="_blank">Espinof</a>.</li>
+                <li>La década de los 70: Los mejores años de la historia del cine - Okdiario. <a href="https://okdiario.com/trailer/decada-70-mejores-anos-historia-del-cine-9173569" target="_blank">Okdiario</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Cine de los 80 y Blockbuster</h4>
+            <ul class="list-unstyled">
+                <li>BLOCKBUSTERS: EL CINE DE LOS 80 | Historia del Cine - YouTube. <a href="https://www.youtube.com/watch?v=Sf7mkoRzZi4" target="_blank">YouTube</a>.</li>
+                <li>Lo que nos enseñó el cine de los 80 - ELLE. <a href="https://www.elle.com/es/living/ocio-cultura/g792810/lo-que-nos-enseno-el-cine-de-los-80/" target="_blank">ELLE</a>.</li>
+                <li>El Nacimiento del Blockbuster - CinReservas. <a href="https://cinreservas.com/historia-del-cine/el-nacimiento-del-blockbuster/" target="_blank">CinReservas</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Cine Actual</h4>
+            <ul class="list-unstyled">
+                <li>El cine en la actualidad - Hiru. <a href="https://www.hiru.eus/es/cine/el-cine-en-la-actualidad" target="_blank">Hiru</a>.</li>
+                <li>La relevancia del cine en la actualidad - iLeón. <a href="https://ileon.eldiario.es/cultura/relevancia-cine-actualidad_1_9367809 " target="_blank">iLeón</a>.</li>
+                <li>El cine como un medio de concientización para la sociedad • Actualidad .... <a href="https://www.forbes.com.mx/el-cine-como-un-medio-de-concientizacion-para-la-sociedad/" target="_blank">Forbes</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Alfred Hitchcock</h4>
+            <ul class="list-unstyled">
+                <li>Alfred Hitchcock, el genio del cine de suspenso - Fahrenheit Magazine. <a href="https://fahrenheitmagazine.com/arte/cine/alfred-hitchcock-el-genio-del-cine-de-suspenso" target="_blank">Fahrenheit Magazine</a>.</li>
+                <li>Hitchcock y su legado en el cine - Canal Trece. <a href="https://canaltrece.com.co/noticias/hitchcock-y-su-legado-en-el-cine/" target="_blank">Canal Trece</a>.</li>
+                <li>Alfred Hitchcock | Biografía, Características y Películas. <a href="https://historiadelcine.es/directores-cine/alfred-hitchcock/" target="_blank">Historia del Cine</a>.</li>
+                <li>Importancia e influencia estética y narrativa del cine de Alfred .... <a href="https://una.edu.ar/assets/files/file/rectorado/2012/investigacion/aa-inv-2011-2012-alfred-hitchcock.pdf" target="_blank">Universidad Nacional de las Artes</a>.</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h4>Imágenes</h4>
+            <ul class="list-unstyled">
+                <li>Películas del 4 de julio: Día de la Independencia (1996), Forrest Gump (1994) y Top Gun (1986) <a href="https://www.milenio.com/espectaculos/cine/4-de-julio-peliculas-para-ver-dia-de-independencia-estados-unidos" target="_blank">Milenio</a>.</li>
+                <li>Películas indias <a href="https://www.cineartemagazine.com/2019/05/india-y-el-cine-en-30-peliculas " target="_blank">Cine Arte Magazine</a>.</li>
+                <li>Películas francesas <a href="http://www.expressfrancais.com/peliculas-en-frances-con-subtitulos-en-frances-pagina-2/" target="_blank">Express Francais</a>.</li>
+                <li>Películas mexicanas <a href="https://coolhuntermx.com/21-peliculas-mexicanas-siglo-xxi-aldo-alvareztostado-gueros-reygadas-alfonso-cuaron-guillermo-del-toro-guillermo-gonzalez-inarritu/" target="_blank">Cool Hunter MX</a>.</li>
+                <li>Películas coreanas <a href="https://www.cinepremiere.com.mx/10-peliculas-coreanas-que-debes-ver " target="_blank">Cine Premiere</a>.</li>
+                <li>"Solaris" (1972), dirigida por Andrei Tarkovsky <a href="https://www.imdb.com/title/tt0069293/mediaviewer/rm1940769024?ref_=ttmi_mi_all_pos_15" target="_blank">IMDb</a>.</li>
+                <li>"Chaplin, el genio más grande de la industria cinematográfica." <a href="https://www.expreso.com.pe/variedades/chaplin-el-genio-mas-grande-de-la-industria-cinematografica-noticia/#google_vignette" target="_blank">Expreso</a>.</li>
+                <li>Orson Welles <a href="https://mubi.com/es/cast/orson-welles" target="_blank">MUBI</a>.</li>
+                <li>Director Steven Spielberg on the set of his film Indiana Jones and the Last Crusade in 1989. BY MURRAY CLOSE/GETTY. <a href="https://www.vanityfair.com/hollywood/2021/03/steven-spielberg-childhood-movie-michelle-williams" target="_blank">Vanity Fair</a>.</li>
+                <li>L'affiche officielle 2019 © Photo : La Pointe courte / 1994 Agnès Varda et ses enfants - Montage & maquette : Flore Maquin <a href="https://mag.agendaculturel.fr/blog/festivals/cannes-2019-la-selection-officielle " target="_blank">Agenda Culturel France</a>.</li>
+                <li>Oscar Statuette <a href="https://www.btlnews.com/wp-content/uploads/2014/01/LR-Oscar-Statuette-p1.jpg" target="_blank">BTL News</a>.</li>
+                <li>« Programme de la projection du 28 décembre 1895 » Photo anonyme (s.d.) <a href="https://jemesouviens.biz/1895-premieres-projections-publiques-de-films/" target="_blank">Jemesouviens</a>.</li>
+                <li>"La fée aux choux (1896)"<a href="https://www.imdb.com/title/tt0223341/mediaviewer/rm1841395968/?ref_=tt_ov_i" target="_blank">IMDb</a>.</li>
+                <li>Poster de El cantor de jazz (1927)<a href="https://www.imdb.com/title/tt0018037/mediaviewer/rm2521537792?ref_=ttmi_mi_all_prd_14" target="_blank">IMDb</a>.</li>
+                <li>El bueno, el feo y el malo (1966) <a href="https://www.imdb.com/title/tt0060196/mediaviewer/rm3800681472?ref_=ttmi_mi_all_sf_16" target="_blank">IMDb</a>.</li>
+                <li>El Padrino (1972) <a href="https://www.imdb.com/title/tt0068646/mediaviewer/rm3949840384?ref_=ttmi_mi_all_sf_1" target="_blank">IMDb</a>.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p>&copy; 2024 Enciclopedia Cinematográfica. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+Usuario: dana@example.com 
+Contraseña: admin1
+xampp\htdocs
+localhost/phpmyadmin

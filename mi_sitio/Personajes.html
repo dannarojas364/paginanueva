@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Explora el fascinante universo del cine a lo largo de los años">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enciclopedia Cinematográfica</title>
+</head>
+
+<body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('app/check_admin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        // Mostrar el botón de administración si el usuario es un administrador
+                        document.querySelector('.admin-button').style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error al verificar el rol del usuario:', error));
+        });
+    </script>
+
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex align-items-center">
+            <img src="imagenes/Logo.jpg" alt="Logo de Enciclopedia Cinematográfica" class="img-fluid mr-3" style="max-width: 100px;">
+            <h1 class="m-0"><a href="index" class="text-white text-decoration-none">Enciclopedia Cinematográfica</a></h1>
+            <a href="app/logout.php" class="btn btn-outline-light ml-auto">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <!-- Formulario de búsqueda -->
+            <form action="buscar" method="get" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="ubicacion ">Ubicación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personajes ">Personajes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="actividades ">Actividades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="historia ">Historia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creditos ">Créditos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comentarios">Comentarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="perfil">Perfil</a></li>
+                    <!-- Botón de administración oculto por defecto -->
+                    <li class="nav-item admin-button" style="display: none;">
+                        <a class="nav-link" href="admin_page">Administrador</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <section class="main-content mb-5">
+            <h2>Personajes del cine</h2>
+            <p>El mundo del cine ha sido moldeado por innumerables individuos talentosos y visionarios. Desde directores innovadores, actores carismáticos, guionistas creativos hasta productores audaces, cada uno ha dejado su huella en la industria.</p>
+        </section>
+
+        <section class="list-content">
+            <!-- Descripción de Los hermanos Lumière -->
+            <div class="mb-5">
+                <h2>Los hermanos Lumière</h2>
+                <p>Los hermanos franceses Auguste y Louis Lumière son reconocidos históricamente como los precursores de la auténtica cinematografía. En 1895, crearon y diseñaron un aparato conocido como cinematógrafo, que permitía la proyección adecuada de películas en lugares o espacios amplios, dando paso a las modernas salas de cine. Los Lumière realizaron las primeras proyecciones de imágenes en movimiento conocidas en el mundo. Sus primeras películas eran documentales de la época, pero también mostraban aspectos de la sociedad parisina de fines del siglo XIX y principios del XX. Con sus "cortos", intentaron crear un lenguaje narrativo en el cine. El 19 de marzo de 1895, grabaron la salida de los obreros de su fábrica en Lyon, y dos días después presentaron los resultados de sus experimentos en la primera proyección privada de cine en la historia. Algunos meses después, el 28 de diciembre de 1895, se hizo la primera proyección pagada, con público, en la historia. Gracias a los inventos que ingeniaron, se desarrolló lo que actualmente se conoce como las películas del cine moderno. Su contribución al mundo del cine ha sido inmensa y su legado perdura hasta el día de hoy.</p>
+                <img src="imagenes/lumiere_hermanos.jpg" class="img-fluid" alt="Los hermanos Lumière">
+            </div>
+
+            <!-- Descripción de Alice Guy -->
+            <div class="mb-5">
+                <h2>Alice Guy</h2>
+                <p>Alice Guy-Blaché es una figura históricamente significativa en el mundo del cine. Nacida en Francia en 1873, se considera que fue la primera persona en dirigir una película de ficción, estableciendo las bases de lo que posteriormente se ha considerado ficción cinematográfica. Guy-Blaché fue una pionera en muchos aspectos del cine. No solo dirigió la primera película de ficción, sino que también fue pionera en el uso de efectos especiales y en la ciencia ficción fílmica. Utilizó técnicas de máscara de doble exposición, filmó secuencias en retroceso y con dobles exposiciones del negativo. Además, fue la primera persona que logró ganar dinero y vivir del cine. Durante su carrera, Alice Guy creó más de 500 películas, de las cuales solo se conservan unas 130. Dirigió comedias, dramas, westerns, musicales, documentales, adaptaciones literarias, y más. A pesar de sus contribuciones significativas al cine, su trabajo fue infravalorado e invisibilizado durante mucho tiempo simplemente por ser mujer. En resumen, la contribución de Alice Guy al cine es innegable. Como una de las pioneras del séptimo arte, su trabajo ha influido en la industria del cine y ha dejado un legado duradero.</p>
+                <img src="imagenes/Alice Guy.webp" class="img-fluid" alt="Alice Guy">
+            </div>
+
+            <!-- Descripción de Georges Méliès -->
+            <div class="mb-5">
+                <h2>Georges Méliès</h2>
+                <p>Georges Méliès, un ilusionista francés, es una figura históricamente significativa en el mundo del cine. Es reconocido por ser el gran creador del cine de espectáculo y fantasía, dando el paso hacia la creación de un lenguaje de ficción para el cine. Méliès fue pionero en el uso de varias técnicas cinematográficas que siguen vigentes hoy en día. Inventó los fundidos a negro y desde negro, y montó el primer estudio cinematográfico, Star Film Company. Además, fue el primero en utilizar el truco de sustitución de elementos mediante el parado de la cámara, y también en la exposición múltiple del negativo. Durante su carrera, Méliès creó más de 500 películas, muchas de las cuales se consideran clásicos del cine mudo. Sus películas más famosas incluyen "Viaje a la Luna" (1902) y "Viaje a través de lo imposible" (1904), que son reconocidas por su imaginación sin límites y su alegría irresistible. En resumen, la contribución de Georges Méliès al cine es innegable. Como uno de los pioneros del séptimo arte, su trabajo ha influido en la industria del cine y ha dejado un legado duradero.</p>
+                <img src="imagenes/melies_hombre_cabeza_goma.jpg" class="img-fluid" alt="Georges Méliès">
+            </div>
+
+            <!-- Descripción de Charles Chaplin -->
+            <div class="mb-5">
+                <h2>Charles Chaplin</h2>
+                <p>Charles Chaplin, también conocido como Charlie Chaplin, es una figura icónica en la historia del cine. Nacido el 16 de abril de 1889, Chaplin es reconocido por su personaje "Charlot", un vagabundo de aspecto peculiar con bigote y sombrero de copa. Chaplin comenzó su carrera en el teatro a una edad temprana y finalmente se trasladó al cine, donde se convirtió en uno de los actores más reconocidos de su tiempo. Sus películas, principalmente mudas, se caracterizaban por su ingenio, su crítica social y su habilidad para combinar comedia y drama de una manera única. A lo largo de su carrera, Chaplin creó algunas de las películas más memorables de la era del cine mudo, incluyendo "El vagabundo", "Luces de la ciudad" y "Tiempos modernos". A pesar de la llegada del cine sonoro, Chaplin continuó haciendo películas mudas, demostrando su compromiso con el arte del cine mudo. Chaplin no solo fue un actor talentoso, sino también un extraordinario director, productor, guionista, compositor musical y editor. Su influencia en el cine es incalculable y su legado continúa vivo en la industria del cine hasta el día de hoy.</p>
+                <img src="imagenes/chaplin.jpg" class="img-fluid" alt="Charles Chaplin">
+            </div>
+
+            <!-- Descripción de Orson Welles -->
+            <div class="mb-5">
+                <h2>Orson Welles</h2>
+                <p>Orson Welles, cuyo nombre completo es George Orson Welles, es un influyente director, productor y actor estadounidense. Nacido el 6 de mayo de 1915, Welles es mejor conocido por su innovador enfoque en el cine y la radio, así como por su magistral dirección de la película "Ciudadano Kane" (1941), que a menudo se considera una de las mejores películas de todos los tiempos. Welles comenzó su carrera en la radio, donde se hizo famoso por su adaptación de "La guerra de los mundos" de H.G. Wells, que causó un pánico masivo en los oyentes en 1938 debido a su realista presentación. Su debut cinematográfico con "Ciudadano Kane" es conocido por su innovador uso del enfoque, la composición y la narrativa no lineal. A lo largo de su carrera, Welles enfrentó muchas dificultades, incluyendo problemas financieros y conflictos con los estudios, pero su contribución al cine es incuestionable. Su estilo único y su enfoque innovador han dejado una marca indeleble en la industria cinematográfica y han influido en generaciones de cineastas. Welles es recordado no solo por su trabajo en el cine, sino también por su talento en la actuación y la producción, y su legado continúa siendo relevante en el mundo del entretenimiento.</p>
+                <img src="imagenes/orson_welles.webp" class="img-fluid" alt="Orson Welles">
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="m-0">&copy; 2024 Enciclopedia Cinematográfica. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts de Bootstrap y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const highlight = urlParams.get('highlight');
+            if (highlight) {
+                highlightText(document.body, highlight);
+                scrollToHighlight();
+            }
+        });
+
+        function highlightText(element, text) {
+            const nodes = Array.from(element.childNodes);
+            nodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const regex = new RegExp(`(${text})`, 'gi');
+                    const newHtml = node.textContent.replace(regex, '<span class="highlight">$1</span>');
+                    if (newHtml !== node.textContent) {
+                        const span = document.createElement('span');
+                        span.innerHTML = newHtml;
+                        node.parentNode.replaceChild(span, node);
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    highlightText(node, text);
+                }
+            });
+        }
+
+        function scrollToHighlight() {
+            const highlighted = document.querySelector('.highlight');
+            if (highlighted) {
+                highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    </script>
+</body>
+
+</html>

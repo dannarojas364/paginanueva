@@ -1,0 +1,24 @@
+/* Estilos para el pie de página */
+footer {
+    background-color: #333;  /* Establece el color de fondo del pie de página */
+    color: white;  /* Establece el color del texto del pie de página */
+    text-align: center;  /* Alinea el texto al centro */
+    padding: 10px;  /* Añade relleno alrededor del texto */
+    position: fixed;  /* Fija el pie de página en la parte inferior de la ventana */
+    bottom: 0;  /* Coloca el pie de página en la parte inferior */
+    width: 100%;  /* Ocupa todo el ancho disponible */
+}
+
+.highlight {
+    background-color: yellow;
+  }
+
+.img-fluid{
+    max-width: 500px;
+    height: auto;
+}
+
+.img-fluid mb-4{
+    max-width: 500px;
+    height: auto;
+}

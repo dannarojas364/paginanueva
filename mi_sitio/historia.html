@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Explora el fascinante universo del cine a lo largo de los años">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enciclopedia Cinematográfica</title>
+</head>
+
+<body>
+
+    <script>
+        fetch('app/auth_check.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.authenticated) {
+                    window.location.href = 'login';
+                }
+            })
+            .catch(error => {
+                console.error('Error al verificar la autenticación:', error);
+                window.location.href = 'login';
+            });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('app/check_admin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        // Mostrar el botón de administración si el usuario es un administrador
+                        document.querySelector('.admin-button').style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error al verificar el rol del usuario:', error));
+        });
+    </script>
+
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex align-items-center">
+            <img src="imagenes/Logo.jpg" alt="Logo de Enciclopedia Cinematográfica" class="img-fluid mr-3" style="max-width: 100px;">
+            <h1 class="m-0"><a href="index" class="text-white text-decoration-none">Enciclopedia Cinematográfica</a></h1>
+            <a href="app/logout.php" class="btn btn-outline-light ml-auto">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <!-- Formulario de búsqueda -->
+            <form action="buscar" method="get" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="ubicacion ">Ubicación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personajes ">Personajes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="actividades ">Actividades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="historia ">Historia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creditos ">Créditos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comentarios">Comentarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="perfil">Perfil</a></li>
+                    <!-- Botón de administración oculto por defecto -->
+                    <li class="nav-item admin-button" style="display: none;">
+                        <a class="nav-link" href="admin_page">Administrador</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+
+
+    <main class="container my-4">
+        <section class="mb-5">
+            <h2>Historia del Cine</h2>
+        </section>
+
+        <section class="mb-5">
+            <h2>El Inicio del Cine</h2>
+            <p>El 28 de diciembre de 1895 marcó un hito en la historia del entretenimiento. En esta fecha, los hermanos Lumière, Auguste y Louis, presentaron de manera pública una proyección que 
+            incluía escenas cotidianas como la salida de obreros de una fábrica en Lyon, la demolición de un muro, la llegada de un tren y la salida de un barco del puerto. Este invento, 
+            como cinematógrafo, fue un éxito inmediato, no solo en Francia, su país de origen, sino también en toda Europa y América del Norte. La capacidad de capturar y reproducir la vida en 
+            movimiento fascinó al público y sentó las bases para el desarrollo del cine tal como lo conocemos hoy.</p>
+            <img src="imagenes/prog1seanc.jpg" class="img-fluid mb-4" alt="Proyección de los Lumière">
+        </section>
+
+        <section class="mb-5">
+            <h2>Alice Guy: La Primera Directora de Cine</h2>
+            <p>Alice Guy se destacó como la primera directora de cine, siendo pionera en el cine narrativo y cultural. Superó el enfoque demostrativo de los hermanos Lumière y estableció las bases 
+            para lo que se consideraría ficción en el futuro. Guy fue también la primera en mantenerse económicamente a través de esta profesión. Su película inicial, y por ende, la primera en 
+            la historia del cine, fue "El hada de los repollos" (La Fée aux Choux, 1896). Esta película, aunque de corta duración, demostró que el cine podía ser utilizado para contar historias, 
+            abriendo la puerta a la creación de películas de ficción.</p>
+            <img src="imagenes/La Fée aux Choux.jpg" class="img-fluid mb-4" alt="El hada de los repollos">
+        </section>
+
+        <section class="mb-5">
+            <h2>Georges Méliès: El Mago del Cine</h2>
+            <p>Tras el éxito de Guy, Georges Méliès decidió ingresar al mundo del cine. Méliès, un mago de profesión, vio en el cine una nueva forma de asombrar al público. Produjo películas con 
+            historias y decorados fantásticos, como "Fausto" y "Barba Azul" (1901), desarrollando nuevas técnicas cinematográficas. Pero fue con "Viaje a la Luna" (1902) y "Viaje a través de lo 
+            imposible" (1904) donde Méliès realmente dejó su huella. Aplicó la técnica teatral ante la cámara, creando los primeros efectos especiales y la ciencia ficción filmada. Sus películas, 
+            llenas de imaginación y maravilla, siguen siendo admiradas hoy en día.</p>
+            <img src="imagenes/Le_Voyage_dans_la_lune.jpg" class="img-fluid mb-4" alt="Viaje a la Luna">
+        </section>
+
+        <section class="mb-5">
+            <h2>La Llegada del Sonido</h2>
+            <p>En 1927, se estrenó la primera película con sonido, "El cantante de jazz", marcando un cambio radical en el cine tal como se conocía. Con la llegada del sonido, el cine dejó de ser un 
+            espectáculo mudo para convertirse en una experiencia audiovisual completa. Se abandonó el lenguaje donde primaba la expresividad de segmentos contrastantes para imponer una mayor 
+            continuidad narrativa y fluidez argumental. En el mismo año, se introdujo el doblaje, permitiendo que las películas fueran disfrutadas por audiencias de diferentes lenguajes y culturas.</p>
+            <img src="imagenes/The_Jazz_Singer_1927_Poster.jpg" class="img-fluid mb-4" alt="El cantante de jazz">
+        </section>
+
+        <section class="mb-5">
+            <h2>El Color Llega al Cine</h2>
+            <p>En 1935, Rouben Mamoulian filmó en Technicolor "La feria de la vanidad (Becky Sharp)", marcando el inicio de la era del color en el cine. Sin embargo, fue con "Lo que el viento se llevó" 
+            (1939) cuando el color alcanzó su máxima plenitud. Esta película, con su vibrante paleta de colores, demostró el potencial del color para mejorar la narrativa y la estética de las 
+            películas. Desde entonces, el color se ha convertido en una parte integral del cine, permitiendo a los cineastas explorar nuevas formas de contar historias y evocar emociones.</p>
+            <img src="imagenes/Poster_-_Gone_With_the_Wind_01.jpg" class="img-fluid mb-4" alt="Lo que el viento se llevó">
+        </section>
+
+        <section class="mb-5">
+            <h2>Ciudadano Kane y su impacto en el cine</h2>
+            <p>"Ciudadano Kane", dirigida por Orson Welles en 1941, es una película que ha dejado una huella indeleble en la historia del cine. A través de su narrativa innovadora, 
+            técnicas cinematográficas revolucionarias y una poderosa actuación, la película ha sido reconocida como una de las mejores de todos los tiempos.</p>
+            <img src="imagenes/citizien_kane.jpg" class="img-fluid mb-4" alt="Ciudadano Kane">
+        </section>
+
+        <section class="mb-5">
+            <h2>El Western en el cine</h2>
+            <p>El western es un género cinematográfico típico del cine estadounidense que se ambienta por lo general en el viejo Oeste estadounidense. A pesar de ser un género netamente 
+            norteamericano, la influencia del western en la cinematografía mundial es indudable.</p>
+            <img src="imagenes/western-movies.jpeg" class="img-fluid mb-4" alt="Western en el cine">
+        </section>
+
+        <section class="mb-5">
+            <h2>El cine de los años 70</h2>
+            <p>La década de los 70 es considerada como una de las más importantes en la historia del cine. Durante este periodo, se produjo una gran evolución en el cine, marcando la concepción del
+            cine moderno como lo entendemos hoy en día.</p>
+            <img src="imagenes/star_wars.webp" class="img-fluid mb-4" alt="El cine de los años 70">
+        </section>
+
+        <section class="mb-5">
+            <h2>El cine de los años 80 y la llegada del Blockbuster</h2>
+            <p>Los años 80 marcaron la llegada del concepto moderno de Blockbuster. Hollywood capitalizó el éxito taquillero de películas como "Star Wars" y reinventó todo su sistema de producción 
+            para una nueva era.</p>
+            <img src="imagenes/cine 80s.jpg" class="img-fluid mb-4" alt="El cine de los años 80">
+        </section>
+
+        <section>
+            <h2>El cine en la actualidad</h2>
+            <p>En la actualidad, el cine no solo sirve como entretenimiento, sino también como un elemento de concientización para la sociedad. Hollywood sigue dominando el panorama mundial, 
+            pero también subsisten cineastas y filmografías al margen de Hollywood.</p>
+            <img src="imagenes/barbenhemimer.jpg" class="img-fluid mb-4" alt="El cine en la actualidad">
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Enciclopedia Cinematográfica. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+CREATE DATABASE blog;
+USE blog;
+CREATE TABLE `comentarios` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `fecha` timestamp NULL DEFAULT current_timestamp
+) ;
+
+CREATE TABLE `contenidos` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descripcion` text NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `fecha` timestamp NULL DEFAULT current_timestamp
+) ;
+
+
+CREATE TABLE `password_resets` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expiry` datetime NOT NULL
+);
+
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(140) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `activo` tinyint(4) NOT NULL,
+  `foto_perfil` varchar(255) DEFAULT 'default.jpg',
+  `rol` varchar(20) NOT NULL DEFAULT 'usuario'
+);
+
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `fecha`, `activo`, `foto_perfil`, `rol`) VALUES
+(1, 'Dana Nova', 'dana@example.com', '$2y$10$l1fecPEE.9WDB0lCQyRhL.SPgeW3au9XCZc/VT6TuAfwHPVZfKZpS', '2024-07-26 13:28:18', 1, 'default.jpg', 'administrador')

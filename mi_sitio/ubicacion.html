@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Explora el fascinante universo del cine a lo largo de los años">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enciclopedia Cinematográfica</title>
+</head>
+
+<body>
+
+    <script>
+        fetch('app/auth_check.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.authenticated) {
+                    window.location.href = 'login';
+                }
+            })
+            .catch(error => {
+                console.error('Error al verificar la autenticación:', error);
+                window.location.href = 'login';
+            });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('app/check_admin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        // Mostrar el botón de administración si el usuario es un administrador
+                        document.querySelector('.admin-button').style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error al verificar el rol del usuario:', error));
+        });
+    </script>
+
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex align-items-center">
+            <img src="imagenes/Logo.jpg" alt="Logo de Enciclopedia Cinematográfica" class="img-fluid mr-3" style="max-width: 100px;">
+            <h1 class="m-0"><a href="index" class="text-white text-decoration-none">Enciclopedia Cinematográfica</a></h1>
+            <a href="app/logout.php" class="btn btn-outline-light ml-auto">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <!-- Formulario de búsqueda -->
+            <form action="buscar" method="get" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="ubicacion ">Ubicación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personajes ">Personajes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="actividades ">Actividades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="historia ">Historia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creditos ">Créditos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comentarios">Comentarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="perfil">Perfil</a></li>
+                    <!-- Botón de administración oculto por defecto -->
+                    <li class="nav-item admin-button" style="display: none;">
+                        <a class="nav-link" href="admin_page">Administrador</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="container my-5">
+        <section class="main-content mb-5">
+            <h2>Ubicaciones del Cine</h2>
+            <p>Bienvenidos a nuestro viaje cinematográfico, una aventura que nos llevará a través del cine en diferentes países del mundo.</p>
+        </section>
+
+        <section class="list-content">
+            <!-- Cine en Japón -->
+            <div class="mb-5">
+                <h2>Cine en Japón</h2>
+                <p>El cine de Japón tiene una historia que abarca más de 100 años. La importación desde Francia de un cinematógrafo de los hermanos Lumière en 1897 marcó los albores del cine en Japón. Japón tiene una de las industrias cinematográficas más antiguas y más grandes del mundo; en 2010, fue el cuarto más grande productor de largometrajes a nivel mundial. Japón ha ganado cinco veces el Premio Óscar a la mejor película de habla no inglesa, más que cualquier otro país asiático.</p>
+                <img src="imagenes/Japon.jpg" class="img-fluid" alt="Cine en Japón">
+            </div>
+
+            <!-- Cine en Estados Unidos -->
+            <div class="mb-5">
+                <h2>Cine en Estados Unidos</h2>
+                <p>Las películas estadounidenses son conocidas en todo el mundo y han tenido un gran impacto en la cultura global. El cine estadounidense ha tenido un gran impacto en la industria cinematográfica en todo el mundo desde principios del siglo XX. Estados Unidos es hogar de Hollywood, el centro más grande de la industria cinematográfica.</p>
+                <img src="imagenes/USA.jpg" class="img-fluid" alt="Cine en Estados Unidos">
+            </div>
+
+            <!-- Cine en India -->
+            <div class="mb-5">
+                <h2>Cine en India</h2>
+                <p>El cine de India, también conocido como Bollywood, es el mayor productor de películas en el mundo. El cine de India es el más grande del mundo en términos de cantidad de películas producidas y el número de entradas vendidas. Las películas de Bollywood son conocidas por su música, baile y drama. El cine de India es muy popular en todo el mundo, especialmente en Asia y Europa.</p>
+                <img src="imagenes/india.jpg" class="img-fluid" alt="Cine en India">
+            </div>
+
+            <!-- Cine en Francia -->
+            <div class="mb-5">
+                <h2>Cine en Francia</h2>
+                <p>Conocido por su cine de autor y sus festivales de cine, como el Festival de Cine de Cannes, el cine de Francia es conocido por ser inventivo y artístico. El cine francés ha sido responsable de muchas innovaciones en la cinematografía y ha producido algunas de las películas más influyentes y aclamadas de la historia del cine. El cine francés ha sido un líder en la industria cinematográfica mundial desde los primeros días del cine.</p>
+                <img src="imagenes/Francia.webp" class="img-fluid" alt="Cine en Francia">
+            </div>
+
+            <!-- Cine en México -->
+            <div class="mb-5">
+                <h2>Cine en México</h2>
+                <p>El cine de México es conocido por su diversidad y calidad. El cine mexicano ha sido reconocido en todo el mundo por su originalidad y creatividad. El cine mexicano ha sido un líder en la industria cinematográfica mundial desde los primeros días del cine.</p>
+                <img src="imagenes/Mexico.jpg" class="img-fluid" alt="Cine en México">
+            </div>
+
+            <!-- Cine en Corea del Sur -->
+            <div class="mb-5">
+                <h2>Cine en Corea del Sur</h2>
+                <p>La industria cinematográfica de Corea del Sur inició en la década de 1940 y continúa vigente. Las películas surcoreanas han sido fuertemente influenciadas por eventos como la ocupación japonesa, la Guerra de Corea, la censura del gobierno, la globalización y la democratización del país asiático. El resurgimiento de la industria con la nueva ola del cine coreano desde finales de los años 1990 hasta el presente produjo las dos películas más taquilleras del país, "The Admiral: Roaring Currents" (2014) y "Extreme Job" (2019), así como producciones ganadoras de premios en el circuito de festivales, entre las que destacan "Pietà" (2012) y "Parásitos" (2019), ganadora de la Palma de Oro y el Óscar a mejor película.</p>
+                <img src="imagenes/Corea del sur.jpeg" class="img-fluid" alt="Cine en Corea del Sur">
+            </div>
+
+            <!-- Cine en Colombia -->
+            <div class="mb-5">
+                <h2>Cine en Colombia</h2>
+                <p>El cine en Colombia ha experimentado un crecimiento significativo en las últimas décadas. Colombia ha producido una serie de películas aclamadas que han recibido reconocimiento internacional.</p>
+                <img src="imagenes/Colombia.gif" class="img-fluid" alt="Cine en Colombia">
+            </div>
+
+            <!-- Cine en Rusia -->
+            <div class="mb-5">
+                <h2>Cine en Rusia</h2>
+                <p>El cine de Rusia ha tenido distintas etapas en la historia rusa, desde los orígenes importando los Zares la novedad desde Francia, pasando por el emblemático cine soviético y llegando al moderno cine de la actual Federación de Rusia. El primer film rodado en Rusia fue tomado por un camarógrafo de los Lumière, se trataba de la coronación del Zar Nicolás II. Poco tiempo después abrirían salas de exhibición de las casas Pathé y Gaumont. En 1908, Aleksandr Drankov produce el primer film narrativo ruso "Stenka Razin", dirigido por V. Romashkov.</p>
+                <img src="imagenes/Rusia.jpg" class="img-fluid" alt="Cine en Rusia">
+            </div>
+
+            <!-- Cine en Italia -->
+            <div class="mb-5">
+                <h2>Cine en Italia</h2>
+                <p>La historia del cine italiano comenzó apenas algunos meses después de que los hermanos Lumière hubieran descubierto el medio, cuando el papa León XIII fue filmado por algunos segundos mientras bendecía la cámara fotográfica. Durante la época del cine mudo, en Italia se produjo un elevado número de películas. Se ha calculado que hasta 1930 se realizaron 9816 filmes de diversa extensión, de las que han sobrevivido unas 1500. Es de destacar el Spaghetti Western, conocido también como western europeo o eurowestern, un subgénero particular del western creado y desarrollado por directores italianos, que estuvo de moda en los años 1960 y 1970 y que se caracteriza por tener producciones europeas, en contraste con las películas tradicionales del género que se filmaban en los Estados Unidos.</p>
+                <img src="imagenes/Italia.webp" class="img-fluid" alt="Cine en Italia">
+            </div>
+
+            <!-- Cine en Alemania -->
+            <div class="mb-5">
+                <h2>Cine en Alemania</h2>
+                <p>El cine de Alemania se remonta a los primeros años de vida del medio con la obra de Max Skladanowsky. Es especialmente influyente durante los años de la República de Weimar con los expresionistas alemanes como Robert Wiene y Friedrich Wilhelm Murnau. El cine expresionista alemán es un movimiento cinematográfico que tuvo un gran impacto en la historia del cine, influyendo de manera decisiva a géneros como el cine negro o el cine de terror. Este estilo de hacer cine tiene su correspondencia con la corriente expresionista, llamada así por contraste con la corriente impresionista del siglo XIX en pintura, es decir, con aquel tipo de pintura en la que prima la «expresión subjetiva» sobre la representación de la objetividad. El expresionismo alemán en el cine refleja los conflictos internos de su audiencia alemana de la década de 1920 al dar a sus problemas una presencia externa ineludible. Al rechazar el realismo cinematográfico, las películas expresionistas muestran interpretaciones dramáticas y revolucionarias de la condición humana. El cine alemán ha hecho grandes aportaciones técnicas y artísticas al cine durante el periodo de 1918-1933.</p>
+                <img src="imagenes/Alemania.jpg" class="img-fluid" alt="Cine en Alemania">
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="m-0">&copy; 2024 Enciclopedia Cinematográfica. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const termino = urlParams.get('q');
+            
+            if (termino) {
+                const regex = new RegExp('(' + termino.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+                document.body.innerHTML = document.body.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+            }
+        });
+    </script>
+
+    <!-- Scripts de Bootstrap y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
