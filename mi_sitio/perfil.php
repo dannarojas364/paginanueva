@@ -124,7 +124,7 @@ if ($result->num_rows === 1) {
                     <button type="submit" class="btn btn-primary">Actualizar Contraseña</button>
                 </form>
                 
-                <a href="logout.php" class="btn btn-danger mt-3">Cerrar Sesión</a>
+                <a href="app/logout.php" class="btn btn-danger mt-3">Cerrar Sesión</a>
             </div>
         </div>
     </div>
